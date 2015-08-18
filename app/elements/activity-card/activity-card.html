@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-localstorage/core-localstorage.html">
+
+
+<polymer-element name="activity-card" attributes="name, handle, activity, time, image">
+  <template bind="data">
+    <link rel="stylesheet" href="activity-card.css">
+    <div id="card">
+      <img class="avatar" src={{image}} />
+      <div>
+        <p>
+          <span class="name">{{name}}</span>
+          <span class="handle">{{handle}}</span>
+        </p>
+        <p>
+          <span class="activity">{{activity}}</span>
+          <span class="time">{{time}}</span>
+        </p>
+      </div>
+    </div>
+  </template>
+  <script>
+    (function () {
+      Polymer('activity-card', {
+        name: 'dummy name',
+        handle: '@dummy',
+        activity: 'did this an that',
+        time: 'a moment ago',
+        image: 'http://lorempixel.com/60/60/',
+      });
+    })();
+  </script>
+</polymer-element>

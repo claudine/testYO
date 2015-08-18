@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>poly foo</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild-->
+
+  <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <!-- endbuild -->
+
+  <!-- will be replaced with elements/elements.vulcanized.html -->
+  <link rel="import" href="elements/elements.html">
+  <!-- endreplace-->
+</head>
+
+<body unresolved fullbleed layout vertical>
+  <template is="auto-binding" id="app">
+
+    <core-drawer-panel>
+      <!-- Drawer -->
+      <core-header-panel drawer>
+        <!-- Drawer Toolbar -->
+        <core-toolbar>Menu</core-toolbar>
+        <!-- Drawer Content -->
+          <core-menu selected="{{route}}" valueattr="data-route">
+            <core-item data-route="home" label="Home"></core-item>
+            <core-item data-route="tweets" label="Tweets"></core-item>
+            <core-item data-route="foo" label="Foo"></core-item>
+          </core-menu>
+      </core-header-panel>
+
+      <!-- Main -->
+      <core-header-panel main>
+
+        <!-- Main Toolbar -->
+        <core-toolbar>
+          <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
+          <span>{{appName}} data.length: {{data.length}}</span>
+        </core-toolbar>
+
+
+        <div class="contentdiv" >
+          <!-- Main Content -->
+          <core-pages selected="{{route}}" valueattr="data-route">
+
+            <section data-route="home">
+              <fake-generator-button data="{{data}}">generate fake data</fake-generator-button>
+              <activity-list data="{{data}}"></activity-list>
+            </section>
+
+            <section data-route="tweets">
+              <p>tweet section.</p>
+            </section>
+
+            <section data-route="foo">
+              <input type="text" value={{appName}}>
+              <maredit-test color="red"></maredit-test>
+              <maredit-test></maredit-test>
+            </section>
+
+          </core-pages>
+
+        </div>
+
+      </core-header-panel>
+    </core-drawer-panel>
+  </template>
+
+
+  <!-- build:js scripts/app.js -->
+  <script src="bower_components/Faker/build/build/faker.js"></script>
+  <script src="bower_components/page.js/page.js"></script>
+  <script src="scripts/app.js"></script>
+  <!-- endbuild-->
+</body>
+
+</html>

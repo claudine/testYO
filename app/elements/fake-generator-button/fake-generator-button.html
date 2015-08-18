@@ -1,0 +1,20 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="fake-generator-button" attributes="data">
+  <template bind="data">
+    <link rel="stylesheet" href="fake-generator-button.css">
+    <paper-button raised on-click="{{onClick}}">
+      <content></content>
+    </paper-button>
+
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        onClick: function(){
+          this.data = generateTweets();
+        }
+      });
+    })();
+  </script>
+</polymer-element>

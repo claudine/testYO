@@ -1,0 +1,34 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-localstorage/core-localstorage.html">
+
+<polymer-element name="activity-list" attributes="data, selected">
+  <template bind="data">
+    <link rel="stylesheet" href="activity-list.css">
+      <core-localstorage id="storage" name="polymer-localstorage-activity-list" value="{{data}}"></core-localstorage>
+      <p>Found {{data.length}} fake-Tweets..</p>
+
+      <template repeat="{{date, index in data}}">
+        <template if="{{index != selected}}">
+          <activity-card name="{{date.name}}" handle="{{date.handle}}" activity="{{date.activity}}"
+                       time="{{date.time}}" image="{{date.image}}" id="{{index}}"
+                      on-tap="{{selectCard}}"></activity-card>
+        </template>
+        <template if="{{index == selected}}">
+          <activity-editor id="editor" name="{{date.name}}" handle="{{date.handle}}" activity="{{date.activity}}"
+                           time="{{date.time}}" image="{{date.image}}"></activity-editor>
+        </template>
+    </template>
+  </template>
+  <script>
+    (function () {
+      Polymer('activity-list',{
+        selected : -1,
+        selectCard: function(e){
+          console.log(this.$.storage);
+          this.$.storage.save();
+          this.selected = e.target.id;
+        }
+      });
+    })();
+  </script>
+</polymer-element>

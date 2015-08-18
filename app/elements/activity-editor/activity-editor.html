@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="activity-editor" attributes="name, activity, handle, image">
+  <template>
+    <link rel="stylesheet" href="activity-editor.css">
+
+    <div id="editContainer">
+      <div>
+        <img class="avatar" src={{image}} />
+      </div>
+      <div id="editArea">
+        <div>
+          <span>Image:</span>
+          <input value="{{image}}">
+        </div>
+        <div>
+          <span>Name:</span>
+          <input value="{{name}}">
+        </div>
+        <div>
+          <span>Twitter-handle:</span>
+          <input value="{{handle}}">
+        </div>
+        <div>
+          <span>Activity:</span>
+          <input value="{{activity}}">
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    (function () {
+      Polymer('activity-editor',{
+      });
+    })();
+  </script>
+</polymer-element>
